@@ -9,7 +9,8 @@ from core.devices import find_keyboard
 """
 TODO:   add JSON settings
         add PySide6 ui
-        add custom button to asign to click and listen 
+        add custom button to asign to click and listen
+        change betwen hold and click for clicker
 """
 
 exclude_names = ["gsr-ui virtual keyboard", "Acer NKW201 Keyboard", "XP-Pen"]
