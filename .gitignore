@@ -1,0 +1,6 @@
+.venv
+.vscode
+bak
+**/__pycache__
+structure.txt
+oldmain.py

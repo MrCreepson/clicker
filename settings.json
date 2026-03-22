@@ -1,0 +1,21 @@
+{
+    "time": [{
+        "s": 0,
+        "ms": 100
+    }],
+    "button": [{
+        "hold": false,
+        "input": "KEY_KPMINUS",
+        "output": "KEY_A"
+    }],
+    "exclude_keyboard_devices": [
+        "gsr-ui virtual keyboard", 
+        "Acer NKW201 Keyboard", 
+        "XP-Pen"
+    ],
+    "postition": [{
+        "is_on": false,
+        "x": 0,
+        "y": 0
+    }]
+}
