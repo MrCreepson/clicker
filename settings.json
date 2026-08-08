@@ -1,21 +1,23 @@
 {
-    "time": [{
+    "time": {
         "s": 0,
-        "ms": 100
-    }],
-    "button": [{
-        "hold": false,
-        "input": "KEY_KPMINUS",
-        "output": "KEY_A"
-    }],
-    "exclude_keyboard_devices": [
-        "gsr-ui virtual keyboard", 
-        "Acer NKW201 Keyboard", 
+        "ms": 0
+    },
+    "button": {
+        "device_type": "mouse",
+        "input": "BTN_EXTRA",
+        "output": "BTN_RIGHT"
+    },
+    "exclude_keyboard_names": [
+        "gsr-ui virtual keyboard",
+        "Acer NKW201 Keyboard",
         "XP-Pen"
     ],
-    "postition": [{
-        "is_on": false,
-        "x": 0,
-        "y": 0
-    }]
+    "exclude_mouse_names": [
+        "Keyboard",
+        "Acer",
+        "XP-Pen",
+        "gsr-ui virtual keyboard"
+    ],
+    "reload_on_toggle": true
 }

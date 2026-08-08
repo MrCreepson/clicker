@@ -7,6 +7,7 @@ class InputListener:
         self.on_toggle = on_toggle
         self.keyboard = device
         self.key = key
+        self.running = True
         print("[/] done listener init")
     
     def start(self) -> None:
@@ -14,10 +15,20 @@ class InputListener:
         t.start()
         print("[/] listener clicker")
 
+    def stop(self) -> None:
+        self.running = False
+        self.keyboard.close()
+        print("[/] listener stopped")
+
     def _run(self) -> None:
-        for event in self.keyboard.read_loop():
-            if event.type == ecodes.EV_KEY and event.value == 1:
-                if event.code == self.key:
-                    print("[/] toggle signal")
-                    self.on_toggle()
+        try:
+            for event in self.keyboard.read_loop():
+                if not self.running:
+                    break
+                if event.type == ecodes.EV_KEY and event.value == 1:
+                    if event.code == self.key:
+                        print("[/] toggle signal")
+                        self.on_toggle()
+        except:
+            pass  # device closed
                     
