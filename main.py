@@ -21,6 +21,12 @@ setproctitle("clicker")
 
 """
 TODO
+        Easy .desktop implementation
+
+        add or ask user to add to input group
+
+        clear all the test and unnecessary files
+
         upgrade PySide6 ui
 
         positional clicker
