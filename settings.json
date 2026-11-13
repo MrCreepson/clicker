@@ -6,18 +6,24 @@
     "button": {
         "device_type": "mouse",
         "input": "BTN_EXTRA",
-        "output": "BTN_RIGHT"
+        "output": "BTN_LEFT"
     },
     "exclude_keyboard_names": [
         "gsr-ui virtual keyboard",
         "Acer NKW201 Keyboard",
-        "XP-Pen"
+        "XP-Pen",
+        "passthrough",
+        "ydotoold",
+        "libvirtualhid"
     ],
     "exclude_mouse_names": [
         "Keyboard",
         "Acer",
         "XP-Pen",
-        "gsr-ui virtual keyboard"
+        "gsr-ui virtual keyboard",
+        "passthrough",
+        "ydotoold",
+        "libvirtualhid"
     ],
     "reload_on_toggle": true
 }

@@ -19,24 +19,3 @@ def find_mouse(exclude_mouse_names) -> InputDevice | None:
                 if ecodes.REL_X in caps and ecodes.REL_Y in caps:
                     return device
     return None
-
-def main():
-    exclude_keyboard_names = ["gsr-ui virtual keyboard", "Acer NKW201 Keyboard", "XP-Pen"]
-    exclude_mouse_names = ["Keyboard", "Acer"]
-
-    keyboard = find_keyboard(exclude_keyboard_names=exclude_keyboard_names)
-    assert keyboard is not None, "Keyboard not found"
-    keyboard.name = keyboard.name.strip()
-    print(keyboard.name)
-
-    mouse = find_mouse(exclude_mouse_names=exclude_mouse_names)
-    assert mouse is not None, "Keyboard not found"
-    mouse.name = mouse.name.strip()
-    print(mouse.name)
-
-    for event in mouse.read_loop():
-        if event.type == ecodes.EV_KEY and event.value == 1:
-            print(event.code, ecodes.BTN_EXTRA)
-
-if __name__ == "__main__":
-    main()

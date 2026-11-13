@@ -44,15 +44,3 @@ class MyWidget(QtWidgets.QWidget):
 
     def on_config_clicked(self):
         subprocess.run(["xdg-open", self.config_file])
-
-if __name__ == "__main__":
-    from  pathlib import Path
-    sys.path.append(str(Path(__file__).resolve().parents[1]))
-    from core.proxy import StdoutProxy
-
-    app = QtWidgets.QApplication(sys.argv)
-    stdout_proxy = StdoutProxy()
-    sys.stdout = stdout_proxy
-    widget = MyWidget(stdout_proxy=stdout_proxy)
-    widget.show()
-    sys.exit(app.exec())

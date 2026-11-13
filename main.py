@@ -1,9 +1,10 @@
-#!/usr/bin/env python3
 import time
 from evdev import ecodes
 import threading
 import json
 import os
+import pwd
+import grp
 
 from core.clicker import Clicker
 from core.input_listener import InputListener
@@ -39,6 +40,26 @@ TODO
         change betwen hold and click for clicker
                 "hold": false,
 """
+
+def get_group_names(username):
+    user_info = pwd.getpwnam(username)
+    gids = os.getgrouplist(username, user_info.pw_gid)
+
+    group_names=[]
+    for gid in gids:
+        try:
+            group_info = grp.getgrgid(gid)
+            group_names.append(group_info.gr_name)
+        except KeyError:
+            group_names.append(str(gid))
+    return group_names
+
+username = pwd.getpwuid(os.getuid()).pw_name
+groups = get_group_names(username)
+
+
+if "input" not in groups :
+    raise PermissionError("Add yourself to input groups (sudo usermod -aG input $USER)")
 
 device_types = ["keyboard", "mouse"]
 
@@ -107,7 +128,7 @@ def main():
     assert device is not None, "Device not found."
 
     device.name = device.name.strip()
-    print(f"[m]  Found device:\n├── Listening device: {device.name},\n├── Listening button: {start_button},\n├── Clicking with: {click_button},\n└── Click delay: {time_sleep}s")
+    print(f"[m]  Found device:\n├── Listening device: {device.name} {{{device.path}}},\n├── Listening button: {start_button},\n├── Clicking with: {click_button},\n└── Click delay: {time_sleep}s")
 
     clicker = Clicker(key=click_button_keycode, time_sleep=time_sleep)
     
